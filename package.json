@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "promised-sqlite3": "^2.1.0",
+    "rxjs": "^7.8.1",
     "sqlite3": "^5.1.7"
   }
 }
