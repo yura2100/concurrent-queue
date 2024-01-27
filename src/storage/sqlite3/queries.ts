@@ -1,5 +1,5 @@
-const JOBS_TABLE = 'queue';
-const JOBS_COUNT_TABLE = 'queue_count';
+const JOBS_TABLE = "queue";
+const JOBS_COUNT_TABLE = "queue_count";
 
 export const INIT_QUERY = `
   CREATE TABLE IF NOT EXISTS ${JOBS_TABLE} (id INTEGER PRIMARY KEY ASC AUTOINCREMENT, job TEXT);

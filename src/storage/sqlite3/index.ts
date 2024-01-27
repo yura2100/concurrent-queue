@@ -1,14 +1,14 @@
 import { AsyncDatabase } from "promised-sqlite3";
 import { JobID } from "../../types/job";
-import { Storage } from '../../types/storage';
+import { Storage } from "../../types/storage";
 import {
-  INIT_QUERY,
-  SIZE_QUERY,
-  SizeQueryResult,
   ADD_QUERY,
   GET_QUERY,
   GetQueryResult,
+  INIT_QUERY,
   REMOVE_QUERY,
+  SIZE_QUERY,
+  SizeQueryResult,
 } from "./queries";
 
 type Sqlite3StorageOptions<T> = {

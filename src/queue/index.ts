@@ -1,6 +1,6 @@
-import { combineLatest, filter, mergeMap, Subject, tap } from "rxjs";
+import { Subject, combineLatest, filter, mergeMap, tap } from "rxjs";
 import { Job } from "../types/job";
-import { Storage } from '../types/storage';
+import { Storage } from "../types/storage";
 import { Counter } from "./counter";
 
 type QueueOptions<T> = {
@@ -36,16 +36,20 @@ export class Queue<T> {
           this.size.decrement();
           this.unprocessed.decrement();
         }, this.options.concurrency),
-      ).subscribe();
+      )
+      .subscribe();
 
     this.capacity$
       .pipe(
         filter(([size, unprocessed]) => size > 0 && unprocessed === 0),
         mergeMap(async () => {
           const jobs = await this.options.storage.get(this.options.batchSize);
-          jobs.forEach((job) => this.jobs$.next(job));
-        })
-      ).subscribe();
+          for (const job of jobs) {
+            this.jobs$.next(job);
+          }
+        }),
+      )
+      .subscribe();
 
     const size = await this.options.storage.size();
     this.size.set(size);
