@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@total-typescript/ts-reset": "^0.5.1",
+    "@types/node": "^20.11.7",
     "typescript": "^5.3.3"
   },
   "dependencies": {
