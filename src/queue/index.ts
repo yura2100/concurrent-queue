@@ -15,7 +15,7 @@ export class Queue<T> {
   private readonly jobs$ = new Subject<Job<T>>();
   private readonly size = new Counter();
   private readonly unprocessed = new Counter();
-  private readonly capacities$ = combineLatest([
+  private readonly capacity$ = combineLatest([
     this.size.asObservable(),
     this.unprocessed.asObservable(),
   ]);
@@ -38,7 +38,7 @@ export class Queue<T> {
         }, this.options.concurrency),
       ).subscribe();
 
-    this.capacities$
+    this.capacity$
       .pipe(
         filter(([size, unprocessed]) => size > 0 && unprocessed === 0),
         mergeMap(async () => {
