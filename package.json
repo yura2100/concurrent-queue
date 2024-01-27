@@ -12,5 +12,9 @@
   "devDependencies": {
     "@total-typescript/ts-reset": "^0.5.1",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "promised-sqlite3": "^2.1.0",
+    "sqlite3": "^5.1.7"
   }
 }
