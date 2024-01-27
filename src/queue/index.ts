@@ -52,7 +52,7 @@ export class Queue<T> {
       .subscribe();
 
     const size = await this.options.storage.size();
-    this.size.set(size);
+    this.size.add(size);
   }
 
   async add(payload: T) {

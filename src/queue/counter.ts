@@ -1,21 +1,21 @@
 import { BehaviorSubject, scan } from "rxjs";
 
 export class Counter {
-  private readonly counter$ = new BehaviorSubject(0);
+  private readonly value$ = new BehaviorSubject(0);
 
   asObservable() {
-    return this.counter$.pipe(scan((prev, next) => prev + next, 0));
+    return this.value$.pipe(scan((prev, next) => prev + next));
   }
 
-  set(newValue: number) {
-    this.counter$.next(newValue);
+  add(value: number) {
+    this.value$.next(value);
   }
 
   increment() {
-    this.counter$.next(1);
+    this.value$.next(1);
   }
 
   decrement() {
-    this.counter$.next(-1);
+    this.value$.next(-1);
   }
 }
